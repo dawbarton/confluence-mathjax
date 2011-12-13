@@ -1,0 +1,16 @@
+<tr bgcolor="ffffff">
+    <td>
+        {mathdisplay}<i>equation</i>{mathdisplay}
+    </td>
+    <td>
+	<p><b>MathJax plugin</b></p>
+        <p>This macro enables you to write displayed equations (i.e., the equations separate from the main text) in Latex notation, which are then typeset using MathJax. MathJax is an open source JavaScript display engine for mathematics that works in all modern browsers.</p>
+	<p>The use of AMSmath extensions is enabled.</p>
+	<p><b>Examples</b>
+	    <ul>
+	        <li>{mathdisplay}\frac{x}{y}{mathdisplay} a nice fraction.</li>
+		<li>{mathdisplay}\int_{-\infty}^\infty \mbox{e}^{-x^2} \mbox{d}x{mathdisplay} a nice integral.</li>
+	    </ul>
+	</p>
+    </td>
+</tr>

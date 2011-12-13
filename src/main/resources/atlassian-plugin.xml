@@ -1,0 +1,39 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+    </plugin-info>
+
+    <macro name="mathinline" class="com.cityinthesky.plugins.MathInline" key="mathinline">
+        <description>Create an inline equation using Latex notation and MathJax.</description>
+        <resource type="velocity" name="help" location="templates/mathinline-help.vm">
+            <param name="help-section" value="advanced"/>
+        </resource>
+        <category name="formatting"/>
+    </macro>
+
+    <macro name="mathdisplay" class="com.cityinthesky.plugins.MathDisplay" key="mathdisplay">
+        <description>Create a displayed equation using Latex notation and MathJax.</description>
+        <resource type="velocity" name="help" location="templates/mathdisplay-help.vm">
+            <param name="help-section" value="advanced"/>
+        </resource>
+        <category name="formatting"/>
+    </macro>
+
+    <web-resource key="config" name="MathJax configuration">
+        <resource type="download" name="MathJaxConfig.js" location="MathJaxConfig.js" />
+    </web-resource>
+
+    <web-resource key="resources" name="MathJax resources">
+        <dependency>com.cityinthesky.plugins.mathjax:config</dependency>
+        <resource type="download" name="MathJax.js" location="mathjax/MathJax.js">
+	    <param name="batch" value="false"/>
+	</resource>
+        <resource type="download" name="config/" location="mathjax/config" />
+        <resource type="download" name="extensions/" location="mathjax/extensions" />
+        <resource type="download" name="fonts/" location="mathjax/fonts" />
+        <resource type="download" name="jax/" location="mathjax/jax" />
+    </web-resource>
+
+</atlassian-plugin>

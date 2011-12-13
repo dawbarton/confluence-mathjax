@@ -1,0 +1,16 @@
+<tr bgcolor="ffffff">
+    <td>
+        {mathinline}<i>equation</i>{mathinline}
+    </td>
+    <td>
+	<p><b>MathJax plugin</b></p>
+        <p>This macro enables you to write inline equations (i.e., the equations are part of a line of text) in Latex notation, which are then typeset using MathJax. MathJax is an open source JavaScript display engine for mathematics that works in all modern browsers.</p>
+	<p>The use of AMSmath extensions is enabled.</p>
+	<p><b>Examples</b>
+	    <ul>
+	        <li>{mathinline}\frac{x}{y}{mathinline} a nice fraction.</li>
+		<li>{mathinline}\int_{-\infty}^\infty \mbox{e}^{-x^2} \mbox{d}x{mathinline} a nice integral.</li>
+	    </ul>
+	</p>
+    </td>
+</tr>
