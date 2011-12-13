@@ -16,7 +16,10 @@ Atlassian Confluence MathJax plugin
    limitations under the License.
 
 
-This plugin for Atlassian Confluence, provides a thin wrapper around
+====== Confluence-MathJax ======
+
+This plugin for Atlassian Confluence
+<http://www.atlassian.com/Confluence>, provides a thin wrapper around
 MathJax <http://www.mathjax.org/>. MathJax is an open source
 JavaScript display engine for mathematics that works in all modern
 browsers.
@@ -27,9 +30,54 @@ either an inline equation (within the main text) or a displayed
 equation (separate from the main text, typically centered on the
 page). AMSmath extensions for Latex are also enabled.
 
+Help is provided in the Confluence Notation Guide under the Advanced
+Formatting tab.
+
+===== Example usage =====
+
+A couple of simple examples:
+  * {mathinline}\frac{x}{y}{mathinline} a nice fraction.
+  * And to get a nice integral, simply use {mathdisplay}\int_{-\infty}^\infty 
+      \mbox{e}^{-x^2} \mbox{d}x.{mathdisplay}
+
+===== Downloading =====
+
+At the moment this plugin definitely works for Atlassian Confluence
+3.4-3.5 and possibly for earlier versions (I haven't tested below
+3.4). A version for Atlassian Confluence 4 will be coming soon
+(they've changed how macros are done...).
+
+You can grab the source code from GitHub
+<https://github.com/db9052/confluence-mathjax>.
+
+The plugin binary should appear on <http://plugins.atlassian.com> soon (search
+for MathJax). It can also be downloaded from the downloads section at GitHub
+<https://github.com/db9052/confluence-mathjax/downloads>.
+
+===== Compiling =====
+
+If you don't want to compile the plugin yourself, download the binary
+from the link above.
+
+The easiest way to compile this plugin is to download the Atlassian
+SDK and simply type "atlas-package". Alternatively, use "atlas-run" to
+automatically run a Confluence instance with the plugin installed
+(uses a development licensed Confluence). Different versions of
+Confluence can be tried using "atlas-run --version 3.5.13".
+
 The src/main/resources/mathjax directory contains a pristine copy of
 MathJax v1.1a. It can be updated as necessary to newer versions of
 MathJax as and when they are released, provided that the configuration
 mechanism does not change from version to version.
+
+**Note:** MathJax itself is not included in the source
+  repository. Simply download it from <http://www.mathjax.org/> and
+  unpack in the appropriate directory. MathJax.js should end up as
+  src/main/resources/mathjax/MathJax.js.
+
+===== Contact =====
+
+If you've got any comments/queries about this plugin, feel free to
+email me at <davebarton@cityinthesky.co.uk>.
 
 -- David A.W. Barton <http://www.cityinthesky.co.uk/>
