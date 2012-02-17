@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cityinthesky.plugins</groupId>
     <artifactId>mathjax</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <organization>
         <name>David A.W. Barton</name>
@@ -74,7 +74,7 @@
     </build>
 
     <properties>
-        <confluence.version>3.5.13</confluence.version>
+        <confluence.version>4.0</confluence.version>
         <confluence.data.version>3.2</confluence.data.version>
     </properties>
 
