@@ -1,7 +1,7 @@
 Atlassian Confluence MathJax plugin
 ===================================
 
-   Copyright 2011 David A.W. Barton (davebarton@cityinthesky.co.uk)
+   Copyright 2011,2012 David A.W. Barton (davebarton@cityinthesky.co.uk)
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -43,9 +43,10 @@ A couple of simple examples:
 ===== Downloading =====
 
 At the moment this plugin definitely works for Atlassian Confluence
-3.4-3.5 and possibly for earlier versions (I haven't tested below
-3.4). A version for Atlassian Confluence 4 will be coming soon
-(they've changed how macros are done...).
+3.4-4.1 and possibly for earlier versions (I haven't tested below
+3.4). If you install in Confluence 3.x, it might complain that some
+dependencies are not fulfilled. This is normal and due to the fact that
+the macro format has changed with Confluence 4.x.
 
 You can grab the source code from GitHub
 <https://github.com/db9052/confluence-mathjax>.
