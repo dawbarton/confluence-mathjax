@@ -71,10 +71,10 @@ MathJax v1.1a. It can be updated as necessary to newer versions of
 MathJax as and when they are released, provided that the configuration
 mechanism does not change from version to version.
 
-**Note:** MathJax itself is not included in the source
-  repository. Simply download it from <http://www.mathjax.org/> and
-  unpack in the appropriate directory. MathJax.js should end up as
-  src/main/resources/mathjax/MathJax.js.
+**Note:** MathJax itself is not included in the source repository. (It is
+  included in the binary however.) Simply download it from
+  <http://www.mathjax.org/> and unpack in the appropriate directory. MathJax.js
+  should end up as src/main/resources/mathjax/MathJax.js.
 
 ===== Contact =====
 
