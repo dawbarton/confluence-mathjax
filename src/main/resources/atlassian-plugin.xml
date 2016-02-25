@@ -3,13 +3,19 @@
         <description>${project.description}</description>
         <version>${project.version}</version>
         <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <!--
+            Writing Plugin Descriptor:
+            https://developer.atlassian.com/confdev/confluence-plugin-guide/writing-confluence-plugins/creating-your-plugin-descriptor
+        -->
+        <!-- This version is displayed in the application's Plugin Manager. -->
+        <version>1.1-Confluence-5.9-compatible</version>
     </plugin-info>
 
     <resource key="icons" name="icons/" type="download" location="images/icons"/>
 
-    <macro name="mathinline" 
-	   class="com.cityinthesky.plugins.mathjax.MathInline" 
-	   key="mathinline">
+    <macro name="mathinline"
+           class="com.cityinthesky.plugins.mathjax.MathInline"
+           key="mathinline">
         <description>Create an inline equation using Latex notation and MathJax.</description>
         <resource type="velocity" name="help" location="templates/mathinline-help.vm">
             <param name="help-section" value="advanced"/>
@@ -17,9 +23,9 @@
         <category name="formatting"/>
     </macro>
 
-    <macro name="mathdisplay" 
-	   class="com.cityinthesky.plugins.mathjax.MathDisplay" 
-	   key="mathdisplay">
+    <macro name="mathdisplay"
+           class="com.cityinthesky.plugins.mathjax.MathDisplay"
+           key="mathdisplay">
         <description>Create a displayed equation using Latex notation and MathJax.</description>
         <resource type="velocity" name="help" location="templates/mathdisplay-help.vm">
             <param name="help-section" value="advanced"/>
@@ -54,8 +60,8 @@
     <web-resource key="resources" name="MathJax resources">
         <dependency>com.cityinthesky.plugins.mathjax:config</dependency>
         <resource type="download" name="MathJax.js" location="mathjax/MathJax.js">
-	    <param name="batch" value="false"/>
-	</resource>
+            <param name="batch" value="false"/>
+        </resource>
         <resource type="download" name="config/" location="mathjax/config" />
         <resource type="download" name="extensions/" location="mathjax/extensions" />
         <resource type="download" name="fonts/" location="mathjax/fonts" />

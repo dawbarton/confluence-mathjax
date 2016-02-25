@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cityinthesky.plugins</groupId>
     <artifactId>mathjax</artifactId>
-    <version>1.1</version>
+    <version>1.1-Confluence-5.9-compatible</version>
 
     <organization>
         <name>David A.W. Barton</name>
@@ -22,7 +22,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.6</version>
+            <version>4.10</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -31,23 +31,45 @@
             <version>${confluence.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
-            <groupId>com.atlassian.confluence.plugin</groupId>
-            <artifactId>func-test</artifactId>
-            <version>2.3</version>
+            <groupId>com.atlassian.plugin</groupId>
+            <artifactId>atlassian-spring-scanner-annotation</artifactId>
+            <version>${atlassian.spring.scanner.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atlassian.plugin</groupId>
+            <artifactId>atlassian-spring-scanner-runtime</artifactId>
+            <version>${atlassian.spring.scanner.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- WIRED TEST RUNNER DEPENDENCIES -->
+        <dependency>
+            <groupId>com.atlassian.plugins</groupId>
+            <artifactId>atlassian-plugins-osgi-testrunner</artifactId>
+            <version>${plugin.testrunner.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>net.sourceforge.jwebunit</groupId>
-            <artifactId>jwebunit-htmlunit-plugin</artifactId>
-            <version>2.2</version>
-            <scope>test</scope>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>net.sourceforge.nekohtml</groupId>
-            <artifactId>nekohtml</artifactId>
-            <version>1.9.12</version>
-            <scope>test</scope>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.2-atlassian-1</version>
         </dependency>
     </dependencies>
 
@@ -56,26 +78,66 @@
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
                 <artifactId>maven-confluence-plugin</artifactId>
-                <version>3.7.2</version>
+                <version>${amps.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <productVersion>${confluence.version}</productVersion>
                     <productDataVersion>${confluence.data.version}</productDataVersion>
+                    <enableQuickReload>true</enableQuickReload>
+                    <enableFastdev>false</enableFastdev>
+                    <instructions>
+                        <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
+
+                        <!-- Add package to export here -->
+                        <Export-Package>
+                            raju.api,
+                        </Export-Package>
+
+                        <!-- Add package import here -->
+                        <Import-Package>
+                            org.springframework.osgi.*;resolution:="optional",
+                            org.eclipse.gemini.blueprint.*;resolution:="optional",
+                            *
+                        </Import-Package>
+
+                        <!-- Ensure plugin is spring powered - see https://extranet.atlassian.com/x/xBS9hQ  -->
+                        <Spring-Context>*</Spring-Context>
+                    </instructions>
                 </configuration>
             </plugin>
+
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>com.atlassian.plugin</groupId>
+                <artifactId>atlassian-spring-scanner-maven-plugin</artifactId>
+                <version>1.2.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>atlassian-spring-scanner</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <scannedDependencies>
+                        <dependency>
+                            <groupId>com.atlassian.plugin</groupId>
+                            <artifactId>atlassian-spring-scanner-external-jar</artifactId>
+                        </dependency>
+                    </scannedDependencies>
+                    <verbose>false</verbose>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <confluence.version>4.0</confluence.version>
-        <confluence.data.version>3.2</confluence.data.version>
+        <confluence.version>5.9.5</confluence.version>
+        <confluence.data.version>5.9.5</confluence.data.version>
+        <amps.version>6.2.1</amps.version>
+        <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
+        <atlassian.spring.scanner.version>1.2.6</atlassian.spring.scanner.version>
+        <!-- This key is used to keep the consistency between the key in atlassian-plugin.xml and the key to generate bundle. -->
+        <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
     </properties>
-
 </project>
